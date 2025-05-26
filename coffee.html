@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffee Shop</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      xintegrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="floating-elements">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <header class="header">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
+        <div class="container-fluid">
+          <a class="navbar-brand logo" href="#">COFFEE SHOP<span></span></a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="fas fa-bars" id="menu-btn"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#menu">Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#products">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#review">Review</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contacts">Contacts</a>
+              </li>
+            </ul>
+
+            <div class="d-flex align-items-center">
+              <div
+                class="fas fa-search me-3"
+                id="search-btn"
+                role="button"
+                aria-label="Search"
+              ></div>
+              <div
+                class="fas fa-shopping-cart"
+                id="cart-btn"
+                role="button"
+                aria-label="Shopping Cart"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="search-form">
+        <input
+          type="search"
+          id="search-box"
+          placeholder="search here..."
+          aria-label="Search input"
+        />
+        <label for="search-box" class="fas fa-search"></label>
+      </div>
+
+      <div class="cart-items-container">
+        <a href="#" class="btn checkout-btn">checkout now</a>
+      </div>
+    </header>
+
+    <section class="home" id="home">
+      <div class="content">
+        <h3>fresh coffee in the morning</h3>
+        <p>A Place to Sip, Think, and Create.</p>
+        <a href="#menu" class="btn">get yours now</a>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <h1 class="heading"><span>about</span> us</h1>
+
+      <div class="row">
+        <div class="image">
+          <img
+            src="imgs/coffee-beans.jpg"
+            alt="Coffee beans and brewing equipment"
+          />
+        </div>
+
+        <div class="content">
+          <h3>what makes our coffee special?</h3>
+          <p>
+            We source our coffee responsibly, working with farmers who
+            prioritize quality, sustainability, and ethical growing practices.
+            Each batch is roasted to highlight the bean's natural flavors,
+            bringing out rich, balanced notes without bitterness.
+          </p>
+          <p>
+            Our baristas are trained in both technique and hospitality, ensuring
+            every cup is crafted with precision and heart. More than just
+            coffee, we offer a space for connection, creativity, and
+            comfort—because we believe a great cup should warm more than just
+            your hands.
+          </p>
+          <a href="#" class="btn">learn more..</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu" id="menu">
+      <h1 class="heading">our<span> menu</span></h1>
+
+      <div class="box-container">
+        <div
+          class="box"
+          data-img="imgs/classic-brew.jpg"
+          data-title="Classic Brew"
+          data-price="120.00"
+          data-old-price="150.00"
+        >
+          <img src="imgs/classic-brew.jpg" alt="Classic Brew Coffee" />
+          <h3>Classic Brew</h3>
+          <div class="price">₱120.00<span>₱150.00</span></div>
+          <a href="#" class="btn add-to-cart-btn">add to cart</a>
+        </div>
+
+        <div
+          class="box"
+          data-img="imgs/love-coffee.jpg"
+          data-title="Latte Love"
+          data-price="150.00"
+          data-old-price="180.00"
+        >
+          <img src="imgs/love-coffee.jpg" alt="Latte Art Coffee" />
+          <h3>Latte Love</h3>
+          <div class="price">₱150.00<span>₱180.00</span></div>
+          <a href="#" class="btn add-to-cart-btn">add to cart</a>
+        </div>
+
+        <div
+          class="box"
+          data-img="imgs/cappuccino.webp"
+          data-title="Cappuccino Bliss"
+          data-price="130.00"
+          data-old-price="160.00"
+        >
+          <img src="imgs/cappuccino.webp" alt="Cappuccino Coffee" />
+          <h3>Cappuccino Bliss</h3>
+          <div class="price">₱130.00<span>₱160.00</span></div>
+          <a href="#" class="btn add-to-cart-btn">add to cart</a>
+        </div>
+
+        <div
+          class="box"
+          data-img="imgs/expresso.jpg"
+          data-title="Espresso Shot"
+          data-price="100.00"
+          data-old-price="120.00"
+        >
+          <img src="imgs/expresso.jpg" alt="Espresso Coffee" />
+          <h3>Espresso Shot</h3>
+          <div class="price">₱100.00<span>₱120.00</span></div>
+          <a href="#" class="btn add-to-cart-btn">add to cart</a>
+        </div>
+
+        <div
+          class="box"
+          data-img="imgs/incedcoffee.jpg"
+          data-title="Iced Coffee Delight"
+          data-price="140.00"
+          data-old-price="170.00"
+        >
+          <img src="imgs/incedcoffee.jpg" alt="Iced Coffee" />
+          <h3>Iced Coffee Delight</h3>
+          <div class="price">₱140.00<span>₱170.00</span></div>
+          <a href="#" class="btn add-to-cart-btn">add to cart</a>
+        </div>
+
+        <div
+          class="box"
+          data-img="imgs/Milktea.jpg"
+          data-title="Milk Tea Special"
+          data-price="110.00"
+          data-old-price="140.00"
+        >
+          <img src="imgs/Milktea.jpg" alt="Milk Tea" />
+          <h3>Milk Tea Special</h3>
+          <div class="price">₱110.00<span>₱140.00</span></div>
+          <a href="#" class="btn add-to-cart-btn">add to cart</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="products" id="products">
+      <h1 class="heading">our <span>products</span></h1>
+      <div class="box-container">
+        <div class="box">
+          <div class="icons">
+            <a
+              href="#"
+              class="fas fa-shopping-cart add-to-cart-btn"
+              aria-label="Add to cart"
+            ></a>
+            <a href="#" class="fas fa-heart" aria-label="Add to wishlist"></a>
+            <a
+              href="#"
+              class="fas fa-eye"
+              aria-label="View product details"
+            ></a>
+          </div>
+          <div class="image">
+            <img src="imgs/coffee-beans.jpg" alt="Fresh Coffee Beans" />
+          </div>
+          <div class="content">
+            <h3>fresh coffee beans</h3>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price">₱300.00<span>₱400.00</span></div>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="icons">
+            <a
+              href="#"
+              class="fas fa-shopping-cart add-to-cart-btn"
+              aria-label="Add to cart"
+            ></a>
+            <a href="#" class="fas fa-heart" aria-label="Add to wishlist"></a>
+            <a
+              href="#"
+              class="fas fa-eye"
+              aria-label="View product details"
+            ></a>
+          </div>
+          <div class="image">
+            <img src="imgs/grinder.webp" alt="Coffee Grinder" />
+          </div>
+          <div class="content">
+            <h3>coffee grinder</h3>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price">₱800.00<span>₱1000.00</span></div>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="icons">
+            <a
+              href="#"
+              class="fas fa-shopping-cart add-to-cart-btn"
+              aria-label="Add to cart"
+            ></a>
+            <a href="#" class="fas fa-heart" aria-label="Add to wishlist"></a>
+            <a
+              href="#"
+              class="fas fa-eye"
+              aria-label="View product details"
+            ></a>
+          </div>
+          <div class="image">
+            <img src="imgs/mug-set.webp" alt="Coffee Mug" />
+          </div>
+          <div class="content">
+            <h3>coffee mug set</h3>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price">₱250.00<span>₱350.00</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="review" id="review">
+      <h1 class="heading">customer's<span> review</span></h1>
+      <div class="box-container">
+        <div class="box">
+          <p>
+            Hands down the best coffee in town! The espresso is smooth and rich,
+            and the vibe is perfect for working or catching up with friends. The
+            staff always greets me with a smile—it's my happy place!"
+          </p>
+          <img
+            src="imgs/sheena.jpg"
+            class="user"
+            alt="Customer Sheena Cordova"
+          />
+          <h3>Sheena Cordova</h3>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+
+        <div class="box">
+          <p>
+            I'm a coffee snob, and this place seriously delivers. You can taste
+            the quality in every sip. Their pour-over is next level, and I love
+            that they use ethically sourced beans. Five stars!
+          </p>
+          <img
+            src="imgs/rechelle.jpg"
+            class="user"
+            alt="Customer Rechelle Mansayon"
+          />
+          <h3>Rechelle Mansayon</h3>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+
+        <div class="box">
+          <p>
+            Such a cozy spot! The drinks are always made just right, and the
+            pastries are amazing too. It's become part of my morning ritual.
+          </p>
+          <img
+            src="imgs/sheryn.jpg"
+            class="user"
+            alt="Customer Sheryn Dequilla"
+          />
+          <h3>Sheryn Dequilla</h3>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacts" id="contacts">
+      <h1 class="heading"><span>Contact</span> Us</h1>
+
+      <div class="row">
+        <form action="">
+          <h3>get in touch</h3>
+          <div class="InputBox">
+            <span class="fas fa-user"></span>
+            <input type="text" placeholder="name" aria-label="Your Name" />
+          </div>
+          <div class="InputBox">
+            <span class="fas fa-envelope"></span>
+            <input type="email" placeholder="email" aria-label="Your Email" />
+          </div>
+          <div class="InputBox">
+            <span class="fas fa-phone"></span>
+            <input
+              type="number"
+              placeholder="number"
+              aria-label="Your Phone Number"
+            />
+          </div>
+          <input type="submit" value="contact now" class="btn" />
+        </form>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="credit">All rights reserved.</div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

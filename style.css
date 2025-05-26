@@ -1,0 +1,1178 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap"); /* Added Playfair Display for headings */
+
+:root {
+  --main-color: #d3ad7f; /* Warm beige/brown */
+  --accent-pink: #f7cac9; /* Soft pink accent */
+  --light-cream: #fdfaf6; /* Creamy background */
+  --dark-brown: #3e2723; /* Darker brown for text/elements */
+  --text-color: #5d4037; /* Medium brown for general text */
+  --soft-pink: #ffc0cb; /* Even softer pink for accents */
+  --coffee-light: #f5e6d6; /* A very light coffee-like shade */
+
+  --border-light: rgba(255, 255, 255, 0.3); /* Lighter border for contrast */
+  --box-shadow-light: 0 5px 15px rgba(0, 0, 0, 0.08); /* Softer shadow */
+  --box-shadow-dark: 0 8px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow */
+  --transition-speed: 0.4s ease; /* Smoother transitions */
+}
+
+* {
+  font-family: "Inter", sans-serif; /* Modern body font */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: var(--transition-speed);
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 9rem;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  width: 0.8rem;
+}
+html::-webkit-scrollbar-track {
+  background: var(--light-cream);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 5rem;
+}
+
+body {
+  background: var(--light-cream);
+  color: var(--text-color);
+  position: relative; /* Needed for absolute positioning of background elements */
+  overflow-x: hidden; /* Hide overflow from floating elements */
+}
+
+/* Custom background animation for the entire body */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--coffee-light) 0%,
+    var(--light-cream) 50%,
+    var(--soft-pink) 100%
+  );
+  z-index: -1; /* Send to back */
+  opacity: 0.9;
+  animation: backgroundFlow 20s infinite alternate ease-in-out; /* Slow, flowing animation */
+}
+
+@keyframes backgroundFlow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Floating elements animation (like subtle coffee beans or hearts) */
+.floating-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allow clicks through */
+  z-index: 0; /* Above background gradient, below content */
+  overflow: hidden;
+}
+
+.floating-elements div {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7); /* White with transparency */
+  border-radius: 50%; /* Make them circles or hearts */
+  opacity: 0;
+  animation: floatUp 15s infinite ease-in-out;
+  filter: blur(1.5px); /* Soft blur */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem; /* For potential emoji/icon */
+  color: var(--accent-pink);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific styling for hearts (if you want heart shapes instead of circles) */
+/*
+.floating-elements div.heart::before,
+.floating-elements div.heart::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.floating-elements div.heart::before {
+  left: -50%;
+}
+
+.floating-elements div.heart::after {
+  top: -50%;
+}
+
+.floating-elements div.heart {
+  transform: rotate(-45deg);
+  border-radius: 0;
+}
+*/
+
+.floating-elements div:nth-child(1) {
+  width: 30px;
+  height: 30px;
+  left: 10%;
+  animation-delay: 0s;
+  background: rgba(var(--accent-pink), 0.5);
+}
+.floating-elements div:nth-child(2) {
+  width: 40px;
+  height: 40px;
+  left: 25%;
+  animation-delay: 2s;
+  background: rgba(var(--main-color), 0.5);
+}
+.floating-elements div:nth-child(3) {
+  width: 25px;
+  height: 25px;
+  left: 40%;
+  animation-delay: 4s;
+  background: rgba(255, 255, 255, 0.7);
+}
+.floating-elements div:nth-child(4) {
+  width: 50px;
+  height: 50px;
+  left: 60%;
+  animation-delay: 6s;
+  background: rgba(var(--accent-pink), 0.4);
+}
+.floating-elements div:nth-child(5) {
+  width: 35px;
+  height: 35px;
+  left: 80%;
+  animation-delay: 8s;
+  background: rgba(var(--main-color), 0.6);
+}
+.floating-elements div:nth-child(6) {
+  width: 20px;
+  height: 20px;
+  left: 5%;
+  animation-delay: 10s;
+  background: rgba(255, 255, 255, 0.8);
+}
+.floating-elements div:nth-child(7) {
+  width: 45px;
+  height: 45px;
+  left: 70%;
+  animation-delay: 12s;
+  background: rgba(var(--soft-pink), 0.7);
+}
+.floating-elements div:nth-child(8) {
+  width: 32px;
+  height: 32px;
+  left: 15%;
+  animation-delay: 1s;
+  background: rgba(var(--light-cream), 0.6);
+}
+.floating-elements div:nth-child(9) {
+  width: 28px;
+  height: 28px;
+  left: 90%;
+  animation-delay: 5s;
+  background: rgba(var(--main-color), 0.4);
+}
+.floating-elements div:nth-child(10) {
+  width: 48px;
+  height: 48px;
+  left: 30%;
+  animation-delay: 9s;
+  background: rgba(var(--accent-pink), 0.6);
+}
+.floating-elements div:nth-child(11) {
+  width: 38px;
+  height: 38px;
+  left: 50%;
+  animation-delay: 3s;
+  background: rgba(255, 255, 255, 0.9);
+}
+.floating-elements div:nth-child(12) {
+  width: 22px;
+  height: 22px;
+  left: 65%;
+  animation-delay: 7s;
+  background: rgba(var(--main-color), 0.7);
+}
+.floating-elements div:nth-child(13) {
+  width: 55px;
+  height: 55px;
+  left: 45%;
+  animation-delay: 11s;
+  background: rgba(var(--soft-pink), 0.5);
+}
+.floating-elements div:nth-child(14) {
+  width: 27px;
+  height: 27px;
+  left: 85%;
+  animation-delay: 13s;
+  background: rgba(255, 255, 255, 0.6);
+}
+.floating-elements div:nth-child(15) {
+  width: 42px;
+  height: 42px;
+  left: 20%;
+  animation-delay: 14s;
+  background: rgba(var(--accent-pink), 0.8);
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+section {
+  padding: 6rem 7%; /* Increased padding for more breathing room */
+  position: relative;
+  overflow: hidden; /* Hide overflow for animations within sections */
+}
+
+/* Scroll reveal animation */
+.section-hidden {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.heading {
+  font-family: "Playfair Display", serif; /* Elegant heading font */
+  text-align: center;
+  color: var(--dark-brown);
+  text-transform: uppercase;
+  padding-bottom: 3.5rem;
+  font-size: 5rem; /* Larger heading */
+  letter-spacing: 0.1rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for headings */
+}
+
+.heading span {
+  color: var(--accent-pink); /* Use accent pink for emphasis */
+  text-transform: uppercase;
+}
+
+.btn {
+  margin-top: 1.5rem;
+  display: inline-block;
+  padding: 1.2rem 4rem; /* Larger button padding */
+  font-size: 1.9rem; /* Larger font size */
+  color: #fff;
+  background: var(--main-color);
+  cursor: pointer;
+  border-radius: 0.8rem; /* More rounded corners */
+  border: none;
+  box-shadow: var(--box-shadow-light);
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+}
+
+.btn:hover,
+.btn:focus {
+  background: var(--accent-pink); /* Hover effect */
+  transform: translateY(-3px); /* Slight lift on hover */
+  box-shadow: var(--box-shadow-dark);
+  outline: none;
+  color: var(--dark-brown); /* Text color change on hover */
+}
+
+/* Header/Navbar Styling (Overriding Bootstrap defaults) */
+.header .navbar {
+  background: var(--light-cream) !important; /* Override Bootstrap's bg-light */
+  padding: 1.5rem 7%;
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: var(--box-shadow-light);
+}
+
+.header .navbar-brand.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 3.2rem;
+  color: var(--dark-brown);
+  font-weight: 700;
+}
+
+.header .navbar-brand.logo span {
+  color: var(--main-color);
+}
+
+.header .navbar-nav .nav-link {
+  margin: 0 1.5rem;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  position: relative;
+  padding-bottom: 0.5rem;
+  font-weight: 500;
+  transition: var(--transition-speed); /* Ensure transition on hover */
+}
+
+.header .navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--main-color);
+  transition: width var(--transition-speed);
+}
+
+.header .navbar-nav .nav-link:hover::after,
+.header .navbar-nav .nav-link:focus::after {
+  width: 100%;
+}
+
+.header .navbar-nav .nav-link:hover,
+.header .navbar-nav .nav-link:focus {
+  color: var(--main-color);
+  outline: none;
+}
+
+.header .navbar-toggler {
+  border: none;
+  padding: 0.8rem;
+  border-radius: 50%;
+  transition: background var(--transition-speed);
+}
+
+.header .navbar-toggler:focus {
+  box-shadow: none; /* Remove Bootstrap's default focus outline */
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.header .navbar-toggler .fas.fa-bars {
+  color: var(--text-color);
+  font-size: 2.8rem;
+}
+
+.header .navbar-toggler:hover .fas.fa-bars {
+  color: var(--main-color);
+}
+
+/* Custom Icons next to Navbar (Search and Cart) */
+.header .d-flex .fas {
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 2.8rem;
+  margin-left: 2rem; /* Spacing between icons */
+  background: none;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 50%;
+  transition: background var(--transition-speed), color var(--transition-speed);
+}
+
+.header .d-flex .fas:hover,
+.header .d-flex .fas:focus {
+  color: var(--main-color);
+  background-color: rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+/* Custom Search Form and Cart Container (positioning relative to fixed header) */
+/* Adjust top position based on header height if needed, or keep it dynamic */
+.header .search-form {
+  position: fixed; /* Changed to fixed to stay with the fixed header */
+  top: 9.5rem; /* Adjust based on your header's actual height + desired gap */
+  right: 7%;
+  background: #fff;
+  width: 50rem;
+  height: 5.5rem;
+  display: flex;
+  align-items: center;
+  transform: scaleY(0);
+  transform-origin: top;
+  box-shadow: var(--box-shadow-dark);
+  border-radius: 0.8rem;
+  opacity: 0;
+  z-index: 999; /* Below header, above content */
+}
+
+.header .search-form.active {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.header .search-form input {
+  height: 100%;
+  width: 100%;
+  font-size: 1.8rem;
+  color: var(--dark-brown);
+  padding: 1rem 2rem;
+  text-transform: none;
+  background: none;
+  border: none;
+}
+
+.header .search-form label {
+  cursor: pointer;
+  font-size: 2.4rem;
+  margin-right: 2rem;
+  color: var(--dark-brown);
+}
+
+.header .search-form label:hover,
+.header .search-form label:focus {
+  color: var(--main-color);
+  outline: none;
+}
+
+.header .cart-items-container {
+  position: fixed; /* Changed to fixed to stay with the fixed header */
+  top: 9.5rem; /* Adjust based on your header's actual height + desired gap */
+  right: -100%; /* Off-screen by default */
+  height: calc(100vh - 9.5rem); /* Fill remaining viewport height */
+  width: 38rem;
+  background: var(--light-cream);
+  padding: 2rem;
+  box-shadow: var(--box-shadow-dark);
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  z-index: 999; /* Below header, above content */
+  transition: right var(--transition-speed), opacity var(--transition-speed); /* Smooth transition */
+}
+
+.header .cart-items-container.active {
+  right: 0;
+  opacity: 1;
+}
+
+.header .cart-items-container .cart-item {
+  position: relative;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.8rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header .cart-items-container .cart-item .fa-times {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #a0a0a0;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.header .cart-items-container .cart-item .fa-times:hover,
+.header .cart-items-container .cart-item .fa-times:focus {
+  color: var(--accent-pink);
+  background-color: rgba(247, 202, 201, 0.2);
+  outline: none;
+}
+
+.header .cart-items-container .cart-item img {
+  height: 9rem;
+  width: 9rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.header .cart-items-container .cart-item .content h3 {
+  font-size: 2rem;
+  color: var(--dark-brown);
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.header .cart-items-container .cart-item .content .price {
+  font-size: 1.7rem;
+  color: var(--main-color);
+  font-weight: 700;
+}
+
+.header .cart-items-container .total-price {
+  font-size: 2.2rem;
+  color: var(--dark-brown);
+  font-weight: 700;
+  text-align: right;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.header .cart-items-container .empty-cart-message {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.header .cart-items-container .checkout-btn {
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* Checkout Confirmation Modal */
+.checkout-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1002;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.checkout-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.checkout-modal-content {
+  background: var(--light-cream);
+  padding: 4rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: var(--box-shadow-dark);
+  transform: scale(0.8);
+  transition: transform 0.5s ease;
+}
+
+.checkout-modal.active .checkout-modal-content {
+  transform: scale(1);
+}
+
+.checkout-modal-content h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 3.5rem;
+  color: var(--dark-brown);
+  margin-bottom: 1.5rem;
+}
+
+.checkout-modal-content p {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin-bottom: 2.5rem;
+}
+
+.checkout-modal-content .btn {
+  padding: 1rem 3rem;
+  font-size: 1.7rem;
+}
+
+.home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden; /* Crucial for containing animations */
+  /* No direct background image here, animated background is through body::before and floating-elements */
+}
+
+.home .content {
+  max-width: 60rem;
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  animation: fadeInDown 1s ease-out; /* Animation for home content */
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home .content h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 6rem; /* Larger and bolder heading */
+  text-transform: uppercase;
+  color: var(--dark-brown);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.home .content p {
+  font-size: 2.2rem;
+  font-weight: 400;
+  line-height: 1.6;
+  padding: 1rem 0;
+  color: var(--text-color);
+  max-width: 50rem;
+}
+
+.about .row {
+  display: flex;
+  align-items: center;
+  background: #fff; /* Lighter background for about section */
+  flex-wrap: wrap;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--box-shadow-light);
+}
+
+.about .row .image {
+  flex: 1 1 35rem;
+}
+
+.about .row .image img {
+  width: 100%;
+  display: block;
+  border-radius: 1rem 0 0 1rem;
+  object-fit: cover;
+  height: 100%; /* Ensure image fills height */
+}
+
+.about .row .content {
+  flex: 1 1 45rem;
+  padding: 4rem; /* Increased padding */
+}
+
+.about .row .content h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 3.8rem;
+  color: var(--dark-brown);
+  margin-bottom: 2rem;
+}
+
+.about .row .content p {
+  font-size: 1.9rem;
+  color: var(--text-color);
+  padding: 1rem 0;
+  line-height: 1.7;
+}
+
+.menu .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 2.5rem; /* Increased gap */
+}
+
+.menu .box-container .box {
+  padding: 3.5rem;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+
+.menu .box-container .box::before {
+  /* Subtle pattern overlay */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 20px 20px;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.menu .box-container .box > * {
+  /* Ensure content is above overlay */
+  position: relative;
+  z-index: 1;
+}
+
+.menu .box-container .box img {
+  height: 18rem;
+  object-fit: cover;
+  margin-bottom: 2rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for images */
+}
+
+.menu .box-container .box img:hover {
+  transform: scale(1.03); /* Slightly zoom in */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.menu .box-container .box h3 {
+  font-family: "Playfair Display", serif;
+  color: var(--dark-brown);
+  font-size: 2.5rem;
+  padding: 0.5rem 0;
+  font-weight: 700;
+}
+
+.menu .box-container .box .price {
+  color: var(--dark-brown);
+  font-size: 3rem;
+  padding: 1rem 0;
+  font-weight: 700;
+}
+
+.menu .box-container .box .price span {
+  font-size: 2rem;
+  text-decoration: line-through;
+  color: var(--text-color);
+  margin-left: 0.8rem;
+  font-weight: 400;
+}
+
+.menu .box-container .box:hover {
+  background: var(--accent-pink); /* Hover background */
+  transform: translateY(-8px); /* Lift effect */
+  box-shadow: var(--box-shadow-dark);
+}
+
+.menu .box-container .box:hover > * {
+  color: var(--dark-brown); /* Text color change on hover */
+}
+
+.menu .box-container .box:hover .btn {
+  background: var(--dark-brown);
+  color: var(--light-cream);
+}
+
+.menu .box-container .box:hover .btn:hover {
+  background: var(--main-color);
+}
+
+.products .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  gap: 2.5rem;
+}
+
+.products .box-container .box {
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 3rem;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: var(--box-shadow-light);
+}
+
+.products .box-container .box .icons {
+  margin-bottom: 1.5rem;
+}
+
+.products .box-container .box .icons a {
+  height: 5rem;
+  width: 5rem;
+  line-height: 5rem;
+  font-size: 2.2rem;
+  color: var(--text-color);
+  margin: 0.8rem;
+  display: inline-block;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.products .box-container .box .icons a:hover,
+.products .box-container .box .icons a:focus {
+  background: var(--main-color);
+  color: #fff;
+  outline: none;
+}
+
+.products .box-container .box .image {
+  padding: 2.5rem 0;
+}
+
+.products .box-container .box .image img {
+  height: 20rem;
+  object-fit: cover;
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for images */
+}
+
+.products .box-container .box .image img:hover {
+  transform: scale(1.03); /* Slightly zoom in */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.products .box-container .box .content h3 {
+  font-family: "Playfair Display", serif;
+  color: var(--dark-brown);
+  font-size: 2.8rem;
+  margin-top: 1rem;
+}
+
+.products .box-container .box .content .stars {
+  padding: 1.5rem;
+}
+
+.products .box-container .box .content .stars i {
+  font-size: 1.8rem;
+  color: var(--accent-pink);
+}
+
+.products .box-container .box .content .price {
+  color: var(--dark-brown);
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.products .box-container .box .content .price span {
+  text-decoration: line-through;
+  font-weight: 400;
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-left: 0.8rem;
+}
+
+.review {
+  background-color: var(--coffee-light); /* Soft background for reviews */
+}
+.review .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 2.5rem;
+}
+
+.review .box-container .box {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  text-align: center;
+  padding: 3.5rem;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: var(--box-shadow-light);
+}
+
+.review .box-container .box p {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  padding: 2rem 0;
+}
+
+.review .box-container .box .user {
+  height: 9rem;
+  width: 9rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--main-color);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review .box-container .box h3 {
+  font-family: "Playfair Display", serif;
+  padding: 1rem 0;
+  font-size: 2.5rem;
+  color: var(--dark-brown);
+}
+
+.review .box-container .box .stars i {
+  font-size: 2rem;
+  color: var(--accent-pink);
+}
+
+.contacts .row form {
+  flex: 1 1 45rem;
+  padding: 5rem 3rem;
+  text-align: center;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow-light);
+}
+
+.contacts .row form h3 {
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  font-size: 4rem;
+  color: var(--dark-brown);
+  margin-bottom: 3rem;
+}
+
+.contacts .row form .InputBox {
+  display: flex;
+  align-items: center;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.8rem;
+  padding: 0.5rem;
+}
+
+.contacts .row form .InputBox span {
+  color: var(--text-color);
+  font-size: 2.2rem;
+  padding-left: 2rem;
+}
+
+.contacts .row form .InputBox input {
+  width: 100%;
+  padding: 1.8rem;
+  font-size: 1.8rem;
+  color: var(--dark-brown);
+  text-transform: none;
+  background: none;
+  border: none;
+}
+
+.contacts .row form .InputBox input:focus {
+  outline: none;
+  border-color: var(--main-color);
+}
+
+.footer {
+  background: var(--dark-brown);
+  text-align: center;
+  padding: 4rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer .share {
+  padding: 1.5rem 0;
+  margin-bottom: 2.5rem;
+}
+
+.footer .share a {
+  height: 5.5rem;
+  width: 5.5rem;
+  line-height: 5.5rem;
+  font-size: 2.4rem;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 0.8rem;
+  border-radius: 50%;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.footer .share a:hover,
+.footer .share a:focus {
+  background-color: var(--main-color);
+  color: var(--dark-brown);
+  outline: none;
+  transform: translateY(-5px);
+}
+
+.footer .links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1.5rem 0;
+  gap: 1.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer .links a {
+  padding: 1.2rem 2.8rem;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.9rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.8rem;
+}
+
+.footer .links a:hover,
+.footer .links a:focus {
+  background-color: var(--main-color);
+  color: var(--dark-brown);
+  outline: none;
+  transform: translateY(-3px);
+}
+
+.footer .credit {
+  font-size: 1.7rem;
+  color: #fff;
+  font-weight: 300;
+  padding: 1.5rem;
+}
+
+.footer .credit span {
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+
+  /* Adjust header padding for smaller screens */
+  .header .navbar {
+    padding: 1.5rem 3%;
+  }
+
+  section {
+    padding: 4rem 3%;
+  }
+
+  .home .content h3 {
+    font-size: 5rem;
+  }
+
+  /* Adjust custom overlays for smaller screens */
+  .header .search-form,
+  .header .cart-items-container {
+    right: 3%; /* Keep it slightly off the edge */
+    width: 94%; /* Take more width */
+    top: 8.5rem; /* Adjust top for potentially smaller header height */
+  }
+
+  .header .cart-items-container.active {
+    right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Bootstrap's navbar-toggler handles menu-btn display */
+
+  .header .navbar-collapse {
+    background: var(--dark-brown); /* Dark background for mobile menu */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow-dark);
+    border-radius: 0 0 0.8rem 0.8rem;
+  }
+
+  .header .navbar-nav .nav-item {
+    text-align: center; /* Center nav items in mobile menu */
+  }
+
+  .header .navbar-nav .nav-link {
+    color: var(--light-cream); /* Text color for mobile menu */
+    display: block;
+    margin: 1rem 0; /* Adjust margin */
+    padding: 1rem;
+    font-size: 2.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .header .navbar-nav .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .header .navbar-nav .nav-link:hover,
+  .header .navbar-nav .nav-link:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 0.5rem;
+  }
+
+  .header .d-flex {
+    justify-content: center; /* Center icons in mobile view if they are part of collapse */
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .home {
+    background-position: left;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .home .content {
+    text-align: center;
+  }
+
+  .home .content h3 {
+    font-size: 4.5rem;
+  }
+
+  .home .content p {
+    font-size: 2rem;
+    padding: 1rem 0;
+  }
+
+  .about .row {
+    flex-direction: column;
+  }
+
+  .about .row .image img {
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  .about .row .content {
+    padding: 3rem;
+  }
+
+  /* Ensure custom overlays are full width on smaller screens */
+  .header .search-form,
+  .header .cart-items-container {
+    right: 0; /* Full width */
+    width: 100%;
+    border-radius: 0; /* No border radius on full width */
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+
+  .header .navbar {
+    padding: 1.5rem 2rem;
+  }
+}
