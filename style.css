@@ -67,7 +67,7 @@ body::before {
     var(--light-cream) 50%,
     var(--soft-pink) 100%
   );
-  z-index: -1; /* Send to back */
+  z-index: -4; /* Send to back */
   opacity: 0.9;
   animation: backgroundFlow 20s infinite alternate ease-in-out; /* Slow, flowing animation */
 }
@@ -89,7 +89,7 @@ body::before {
   width: 100%;
   height: 100%;
   pointer-events: none; /* Allow clicks through */
-  z-index: 0; /* Above background gradient, below content */
+  z-index: -1000; /* Above background gradient, below content */
   overflow: hidden;
 }
 
@@ -422,7 +422,8 @@ section {
   box-shadow: var(--box-shadow-dark);
   border-radius: 0.8rem;
   opacity: 0;
-  z-index: 999; /* Below header, above content */
+  z-index: 1001; /* Below header, above content */
+  transition: transform var(--transition-speed), opacity var(--transition-speed);
 }
 
 .header .search-form.active {
@@ -451,6 +452,29 @@ section {
 .header .search-form label:hover,
 .header .search-form label:focus {
   color: var(--main-color);
+  outline: none;
+}
+
+/* Add close button to search form */
+.header .search-form .close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: var(--text-color);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: color var(--transition-speed),
+    background-color var(--transition-speed);
+}
+
+.header .search-form .close-btn:hover,
+.header .search-form .close-btn:focus {
+  color: var(--accent-pink);
+  background-color: rgba(247, 202, 201, 0.2);
   outline: none;
 }
 
@@ -553,6 +577,52 @@ section {
   margin-top: auto;
 }
 
+/* Add close button to cart items container */
+.header .cart-items-container .close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: var(--text-color);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: color var(--transition-speed),
+    background-color var(--transition-speed);
+}
+
+.header .cart-items-container .close-btn:hover,
+.header .cart-items-container .close-btn:focus {
+  color: var(--accent-pink);
+  background-color: rgba(247, 202, 201, 0.2);
+  outline: none;
+}
+
+/* Add backdrop to search form and cart items container */
+.header .search-form::before,
+.header .cart-items-container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-speed),
+    visibility var(--transition-speed);
+}
+
+.header .search-form.active::before,
+.header .cart-items-container.active::before {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* Checkout Confirmation Modal */
 .checkout-modal {
   position: fixed;
@@ -564,7 +634,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1002;
+  z-index: 1055;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -1165,6 +1235,31 @@ section {
     width: 100%;
     border-radius: 0; /* No border radius on full width */
   }
+
+  /* Products Section - Adjust grid for smaller screens */
+  .products .box-container {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(25rem, 1fr)
+    ); /* Smaller boxes */
+  }
+
+  .products .box-container .box {
+    padding: 2rem; /* Less padding inside boxes */
+  }
+
+  .products .box-container .box .image img {
+    height: 18rem; /* Slightly smaller images */
+  }
+
+  /* Contact Section - Adjust form padding */
+  .contacts .row form {
+    padding: 4rem 2rem; /* Less padding for the form */
+  }
+
+  .contacts .row form h3 {
+    font-size: 3.5rem; /* Smaller heading */
+  }
 }
 
 @media (max-width: 450px) {
@@ -1174,5 +1269,154 @@ section {
 
   .header .navbar {
     padding: 1.5rem 2rem;
+  }
+
+  /* Home Section - Further reduce font sizes */
+  .home .content h3 {
+    font-size: 4rem;
+  }
+
+  .home .content p {
+    font-size: 1.8rem;
+  }
+
+  /* Menu Section - Adjust box padding */
+  .menu .box-container .box {
+    padding: 2.5rem;
+  }
+
+  /* Products Section - Single column layout */
+  .products .box-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Review Section - Adjust box padding */
+  .review .box-container .box {
+    padding: 2.5rem;
+  }
+
+  /* Contact Section - Further reduce form padding and font sizes */
+  .contacts .row form {
+    padding: 3rem 1.5rem;
+  }
+
+  .contacts .row form h3 {
+    font-size: 3rem;
+  }
+
+  .contacts .row form .InputBox span {
+    font-size: 2rem;
+  }
+
+  .contacts .row form .InputBox input {
+    font-size: 1.6rem;
+    padding: 1.5rem;
+  }
+}
+
+/* Additional Mobile-Specific Fixes (Addressing the original issue) */
+@media (max-width: 768px) {
+  /* Hide search form and cart container by default on mobile */
+  .header .search-form {
+    transform: scaleY(0);
+    opacity: 0;
+    top: 100%; /* Position below the header */
+    right: 0;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .header .cart-items-container {
+    right: -100%;
+    opacity: 0;
+    top: 100%; /* Position below the header */
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* Make search form and cart container take full screen on mobile when active */
+  .header .search-form.active,
+  .header .cart-items-container.active {
+    top: 0; /* Cover the entire screen */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items to the top */
+    padding-top: 8rem; /* Add some padding at the top */
+    box-shadow: var(--box-shadow-dark); /* Add shadow for better visibility */
+  }
+
+  /* Style the close button for better visibility */
+  .header .search-form .close-btn,
+  .header .cart-items-container .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 3rem;
+    color: var(--text-color);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 0.5rem;
+    z-index: 10; /* Ensure it's above other elements */
+  }
+
+  /* Style the backdrop to cover the entire screen */
+  .header .search-form::before,
+  .header .cart-items-container::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Darker backdrop */
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed),
+      visibility var(--transition-speed);
+  }
+
+  .header .search-form.active::before,
+  .header .cart-items-container.active::before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Style the search input to take full width */
+  .header .search-form.active input {
+    width: 100%;
+    padding: 2rem;
+    font-size: 2rem;
+  }
+
+  /* Style the cart items container to take full height */
+  .header .cart-items-container.active .cart-item {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .header .cart-items-container.active .cart-item img {
+    height: 7rem;
+    width: 7rem;
+  }
+
+  .header .cart-items-container.active .cart-item .content h3 {
+    font-size: 1.8rem;
+  }
+
+  .header .cart-items-container.active .cart-item .content .price {
+    font-size: 1.6rem;
+  }
+
+  .header .cart-items-container.active .total-price {
+    font-size: 2rem;
+    padding: 1rem;
+  }
+
+  .header .cart-items-container.active .checkout-btn {
+    margin-top: auto;
   }
 }
